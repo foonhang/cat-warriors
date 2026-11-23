@@ -6,9 +6,9 @@ const STR = JSON.parse(fs.readFileSync('./strings.en.json','utf8'));
 const game = fs.readFileSync('./game.js','utf8');
 const html = fs.readFileSync('./index.html','utf8');
 
-assert.strictEqual(CFG.version, 'v0.5.1');
-assert.strictEqual(STR.ui.version, 'v0.5.1');
-assert.ok(html.includes('v0.5.1'), 'index.html version');
+assert.strictEqual(CFG.version, 'v0.5.2');
+assert.strictEqual(STR.ui.version, 'v0.5.2');
+assert.ok(html.includes('v0.5.2'), 'index.html version');
 assert.ok(html.includes('creator-screen'), 'creator screen');
 assert.ok(html.includes('btn-scratch-wave'), 'scratch wave button');
 
@@ -149,9 +149,10 @@ assert.strictEqual(CFG.LOCALSTORAGE_KEY, 'mao_zu_v04');
 assert.ok(STR.ui.creator_title);
 assert.ok(STR.ui.creator_create);
 assert.ok(STR.dialogue.lv2_pre_0.includes('{playerName}') || STR.dialogue.lv3_post_0.includes('{playerName}'));
-for (const needle of ['playerCustom', 'defaultPlayerCustom', 'drawTintedPlayer', 'confirmCreator', 'openCreator', 'creator-screen', 'Sunny', 'interpolatePlayerName']) {
+for (const needle of ['playerCustom', 'defaultPlayerCustom', 'drawTintedPlayer', 'confirmCreator', 'openCreator', 'creator-screen', 'Sunny', 'interpolatePlayerName', 'registered to player_idle']) {
   assert.ok(game.includes(needle), 'missing '+needle);
 }
+assert.ok(!game.includes('OVERLAY_FIT'), 'overlays draw 1:1, no scale/offset fit');
 
 console.log('SMOKE OK');
 

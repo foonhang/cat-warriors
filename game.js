@@ -1,4 +1,4 @@
-/* Cat Clan RPG light v0.5.1 — creator tint fix + grayscale P0; Slice1 lv1–5; numbers from config.json; cutscenes §E */
+/* Cat Clan RPG light v0.5.2 — creator overlays registered to player_idle (1:1); Slice1 lv1–5 */
 (() => {
   "use strict";
 
@@ -428,6 +428,7 @@
     }
   }
 
+  // creator overlays: Art v0.5.2 registered 128×128 to player_idle — draw 1:1
   function tryOverlay(targetCtx, path, x, y, size) {
     if (!path) return;
     // runtime optional overlays — skip if not loaded
@@ -465,10 +466,10 @@
       targetCtx.lineWidth = 2;
       targetCtx.stroke();
     }
-    drawEyeDots(targetCtx, x, y, r, eyeHex);
     if (c.markings && c.markings !== "none") {
       tryOverlay(targetCtx, "art/markings_" + c.markings + ".png", x, y, size);
     }
+    drawEyeDots(targetCtx, x, y, r, eyeHex);
     if (c.accessory && c.accessory !== "none") {
       tryOverlay(targetCtx, "art/accessory_" + c.accessory + ".png", x, y, size);
     }
