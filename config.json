@@ -1,5 +1,5 @@
 {
-  "version": "v0.5.2",
+  "version": "v0.6.0",
   "ZONES": [
     "Camp",
     "Forest",
@@ -317,10 +317,10 @@
     "btnContinue": "art/btn_continue.png",
     "btnRetry": "art/btn_retry.png",
     "playerIdle": "art/player_idle.png",
-    "playerWalkA": "art/player_walk_a.png",
-    "playerWalkB": "art/player_walk_b.png",
-    "playerAtk": "art/player_atk.png",
-    "playerPortrait": "art/player_portrait.png",
+    "playerWalkA": "art/player_idle.png",
+    "playerWalkB": "art/player_idle.png",
+    "playerAtk": "art/player_idle.png",
+    "playerPortrait": "art/player_idle.png",
     "companionIdle": "art/companion_idle.png",
     "companionWalkA": "art/companion_walk_a.png",
     "companionWalkB": "art/companion_walk_b.png",
@@ -370,70 +370,5 @@
     "bgForest": "#7a9e6a",
     "bgCreek": "#8ec8d8"
   },
-  "CREATOR": {
-    "nameMax": 12,
-    "defaultName": "Kit",
-    "furs": [
-      "orange",
-      "grey",
-      "cream",
-      "black"
-    ],
-    "eyes": [
-      "amber",
-      "green",
-      "blue"
-    ],
-    "markings": [
-      "none",
-      "stripes"
-    ],
-    "accessories": [
-      "none",
-      "collar",
-      "bandana",
-      "bell"
-    ],
-    "furColors": {
-      "orange": "#E8A040",
-      "grey": "#8B8B8B",
-      "cream": "#F5E6D3",
-      "black": "#2C2C2C"
-    },
-    "eyeColors": {
-      "amber": "#FFB84D",
-      "green": "#7FD87F",
-      "blue": "#6BA3D4"
-    },
-    "presets": {
-      "Sunny": {
-        "name": "Kit",
-        "fur": "orange",
-        "eyes": "amber",
-        "markings": "none",
-        "accessory": "none"
-      },
-      "Mystic": {
-        "name": "Mist",
-        "fur": "grey",
-        "eyes": "blue",
-        "markings": "stripes",
-        "accessory": "collar"
-      },
-      "Shadow": {
-        "name": "Shade",
-        "fur": "black",
-        "eyes": "green",
-        "markings": "stripes",
-        "accessory": "bandana"
-      },
-      "CreamDream": {
-        "name": "Cream",
-        "fur": "cream",
-        "eyes": "amber",
-        "markings": "none",
-        "accessory": "bell"
-      }
-    }
-  }
+  "PLAYER_NAME": "Kit"
 }
