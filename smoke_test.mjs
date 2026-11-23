@@ -6,10 +6,10 @@ const STR = JSON.parse(fs.readFileSync('./strings.en.json','utf8'));
 const game = fs.readFileSync('./game.js','utf8');
 const html = fs.readFileSync('./index.html','utf8');
 
-assert.strictEqual(CFG.version, 'v0.5.2');
-assert.strictEqual(STR.ui.version, 'v0.5.2');
-assert.ok(html.includes('v0.5.2'), 'index.html version');
-assert.ok(html.includes('creator-screen'), 'creator screen');
+assert.strictEqual(CFG.version, 'v0.6.0');
+assert.strictEqual(STR.ui.version, 'v0.6.0');
+assert.ok(html.includes('v0.6.0'), 'index.html version');
+assert.ok(!html.includes('creator-screen'), 'no creator screen');
 assert.ok(html.includes('btn-scratch-wave'), 'scratch wave button');
 
 assert.strictEqual(CFG.LEVEL_MAX, 5);
@@ -125,34 +125,27 @@ assert.ok(css.includes('#dlg-avatar'));
 assert.ok(css.includes('background-size: cover'));
 
 
-// v0.5 creator
-assert.ok(CFG.CREATOR, 'CREATOR block');
-assert.strictEqual(CFG.CREATOR.furs.length, 4);
-assert.strictEqual(CFG.CREATOR.eyes.length, 3);
-assert.deepStrictEqual(CFG.CREATOR.markings, ['none', 'stripes']);
-assert.strictEqual(CFG.CREATOR.accessories.length, 4);
-assert.strictEqual(Object.keys(CFG.CREATOR.presets).length, 4);
-assert.ok(CFG.CREATOR.presets.Sunny);
-assert.ok(CFG.CREATOR.presets.Mystic);
-assert.ok(CFG.CREATOR.presets.Shadow);
-assert.ok(CFG.CREATOR.presets.CreamDream);
-assert.strictEqual(CFG.CREATOR.presets.Sunny.fur, 'orange');
-assert.strictEqual(CFG.CREATOR.presets.Shadow.markings, 'stripes');
-assert.strictEqual(CFG.CREATOR.presets.CreamDream.markings, 'none');
-assert.ok(fs.existsSync('art/markings_stripes.png'));
-assert.ok(fs.existsSync('art/accessory_collar.png'));
-assert.ok(fs.existsSync('art/accessory_bandana.png'));
-assert.ok(fs.existsSync('art/accessory_bell.png'));
-assert.ok(!fs.existsSync('art/markings_spots.png'));
-assert.ok(!fs.existsSync('art/markings_blaze.png'));
-assert.strictEqual(CFG.LOCALSTORAGE_KEY, 'mao_zu_v04');
-assert.ok(STR.ui.creator_title);
-assert.ok(STR.ui.creator_create);
-assert.ok(STR.dialogue.lv2_pre_0.includes('{playerName}') || STR.dialogue.lv3_post_0.includes('{playerName}'));
-for (const needle of ['playerCustom', 'defaultPlayerCustom', 'drawTintedPlayer', 'confirmCreator', 'openCreator', 'creator-screen', 'Sunny', 'interpolatePlayerName', 'registered to player_idle']) {
-  assert.ok(game.includes(needle), 'missing '+needle);
+// v0.6.0: no creator; player color idle for every pose
+assert.ok(!('CREATOR' in CFG), 'no CREATOR block');
+assert.strictEqual(CFG.PLAYER_NAME, 'Kit');
+for (const k of ['playerIdle', 'playerWalkA', 'playerWalkB', 'playerAtk', 'playerPortrait']) {
+  assert.strictEqual(CFG.art[k], 'art/player_idle.png', k);
 }
-assert.ok(!game.includes('OVERLAY_FIT'), 'overlays draw 1:1, no scale/offset fit');
+for (const f of ['art/player_walk_a.png', 'art/player_walk_b.png', 'art/player_atk.png', 'art/player_portrait.png']) {
+  assert.ok(!fs.existsSync(f), 'do not deploy ' + f);
+}
+assert.ok(fs.existsSync('art/player_idle.png'));
+assert.ok(fs.existsSync('art/player.png'));
+assert.strictEqual(CFG.LOCALSTORAGE_KEY, 'mao_zu_v04');
+assert.ok(STR.dialogue.lv2_pre_0.includes('{playerName}') || STR.dialogue.lv3_post_0.includes('{playerName}'));
+assert.ok(game.includes('v0.6.0'));
+assert.ok(game.includes('player uses color idle for all poses'));
+assert.ok(game.includes('interpolatePlayerName'));
+for (const needle of ['drawTintedPlayer', 'drawEyeDots', 'openCreator', 'creator-screen', 'playerCustom', 'art/creator', 'markings_', 'accessory_']) {
+  assert.ok(!game.includes(needle), 'game.js must not contain ' + needle);
+}
+assert.ok(!html.includes('creator-screen'));
+assert.ok(!css.includes('creator-screen'));
 
 console.log('SMOKE OK');
 
