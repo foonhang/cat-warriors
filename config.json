@@ -1,5 +1,5 @@
 {
-  "version": "v0.6.0",
+  "version": "v0.7.0",
   "ZONES": [
     "Camp",
     "Forest",
@@ -55,8 +55,8 @@
   "ASSIST_ON_FAIL_ENEMY_HP_PCT": 0.2,
   "TTS_RATE": 0.85,
   "TTS_LANG": "en-US",
-  "LOCALSTORAGE_KEY": "mao_zu_v04",
-  "LOCALSTORAGE_LEGACY_KEY": "mao_zu_v01",
+  "LOCALSTORAGE_KEY": "mao_zu_v07",
+  "LOCALSTORAGE_LEGACY_KEY": "mao_zu_v04",
   "ENEMIES": {
     "Bug": {
       "hp": 18,

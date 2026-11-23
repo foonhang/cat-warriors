@@ -1,8 +1,8 @@
 # Cat Clan (貓族) — web prototype
 
-**Version:** v0.6.0 (color comic originals, no creator; player color idle for all poses; Slice1 lv1–5)
+**Version:** v0.7.0 (walk and talk; color comic originals; player color idle for all poses; no combat)
 
-Kids ~7.5 story RPG light. Camp→Forest; Creek teaser after FoxCub midboss.
+Kids ~7.5 story walk. Camp, Forest, and Creek. Tap friends to talk. Bug, Mouse, and Fox Cub are story characters only.
 
 ## Run
 ```bash
@@ -15,13 +15,12 @@ cd mao-zu-proto && python3 -m http.server 8765
 node smoke_test.mjs
 ```
 
-## Slice1 locks
-- Dialogue SoT: Poe §E (trimmed ≤6 words)
-- Player: HP base 40 / +6 per lv; ATK base 6 / +2
-- Skills: Claw, Pounce@2, Groom@3, ScratchWave@5 (Leap@7 table only; Roar deferred)
-- Companion: purple kitten @ story Lv3; OldGrey/Pebble = NPC
-- Enemies: Bug / Mouse / FoxCub midboss (HP35 ATK5)
-- Save key: `mao_zu_v04` (migrates from `mao_zu_v01`)
-- New Game starts the adventure; player is the existing color comic Player (no custom creator, no tint / eye dots / accessories)
+## v0.7.0 locks
+- Walk between Camp / Forest / Creek (screen edges)
+- Tap a cat to play existing cutscenes (combat lines rewritten as short story)
+- No turn combat, HP, or skills
+- Player is the existing color comic Player (no custom creator; walk/atk/portrait share color idle)
+- Companion (purple kitten) follows Kit
+- Save key: `mao_zu_v07` (can continue from `mao_zu_v04` zone)
 
 Pages: parent CloudAgent push — do not self-push.
